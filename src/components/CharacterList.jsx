@@ -18,7 +18,7 @@ function Character({ item }) {
       <img src={item.image} alt={item.name} />
       <h3 className="name">
         <span>{item.gender === "Male" ? "👨" : "👩"}</span>
-        <span className="">{item.name}</span>
+        <span className=""> {item.name}</span>
       </h3>
       <div className="list-item__info">
         <span
@@ -27,7 +27,9 @@ function Character({ item }) {
         <span> {item.status} </span>
         <span> - {item.species}</span>
       </div>
-      <button className="icon red"><EyeIcon/> </button>
+      <button className="icon red">
+        <EyeIcon />{" "}
+      </button>
     </div>
   );
 }
