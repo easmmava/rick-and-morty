@@ -1,6 +1,5 @@
-import { character } from "../../data/data";
+import { character, episodes } from "../../data/data";
 import { ArrowUpCircleIcon } from "@heroicons/react/24/outline";
-import { episodes } from "../../data/data";
 
 function CharacterDetail() {
   return (
@@ -43,7 +42,8 @@ function CharacterDetail() {
           {episodes.map((item, index) => (
             <li key={item.id}>
               <div>
-                {String(index + 1).padStart(2, "0")} - {item.episode} : <strong>{item.name}</strong>
+                {String(index + 1).padStart(2, "0")} - {item.episode} :{" "}
+                <strong>{item.name}</strong>
               </div>
               <div className="badge badge--secondary">{item.air_date}</div>
             </li>
