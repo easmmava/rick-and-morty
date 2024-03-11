@@ -11,6 +11,7 @@ function App() {
   const [characters, setCharacters] = useState(allCharacters);
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -35,19 +36,31 @@ function App() {
   //   console.log("CALL EFFECT WITH QUERY CHANGES");
   // }, [query]);
 
-  return (
-    <div className="app">
-      <Toaster />
-      <Navbar>
-        <Search query={query} setQuery={setQuery} />
-        <SearchResult numOfResult={characters.length} />
-      </Navbar>
+const handleSelectCharacter = (id) => {
+  setSelectedId(id);
+};
 
-      <div className="main">
-        <CharacterList characters={characters} isLoading={isLoading} />
-        <CharacterDetail />
-      </div>
+console.log(selectedId);
+
+return (
+  <div className="app">
+    <Toaster />
+    <Navbar>
+      <Search query={query} setQuery={setQuery} />
+      <SearchResult numOfResult={characters.length} />
+    </Navbar>
+
+    <div className="main">
+      <CharacterList
+        characters={characters}
+        isLoading={isLoading}
+        onSelectCharacter={
+          handleSelectCharacter
+        }
+      />
+      <CharacterDetail selectedId={selectedId} />
     </div>
-  );
+  </div>
+);
 }
 export default App;
